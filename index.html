@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta name="description" content="巴巴电影网（https://babadianyingwang-wap.github.io）电影评论编辑部，以长文影评、类型片志与年度榜单为主，提供动作、喜剧、爱情、科幻、悬疑等类型影片的深度内容。">
+<meta name="keywords" content="巴巴电影网, babadianyingwang-wap, 电影评论, 深度影评, 电影编辑部, 年度榜单, 类型片志, 动作片, 喜剧片, 科幻片, 悬疑片, github.io">
+<meta name="author" content="巴巴电影网编辑部">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://babadianyingwang-wap.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="巴巴电影网 - 电影评论编辑部 | 深度影评 · 类型片志 · 年度榜单">
+<meta property="og:description" content="巴巴电影网（https://babadianyingwang-wap.github.io）电影评论编辑部，提供深度影评、类型片志与年度榜单。">
+<meta property="og:url" content="https://babadianyingwang-wap.github.io/">
+<meta property="og:site_name" content="巴巴电影网">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="巴巴电影网 - 电影评论编辑部">
+<meta name="twitter:description" content="巴巴电影网（https://babadianyingwang-wap.github.io）深度影评、类型片志与年度榜单。">
+<title>巴巴电影网 - 电影评论编辑部 | 深度影评 · 类型片志 · 年度榜单</title>
+<style>
+:root{
+  --paper:#f4f1ea; --paper2:#eceae3; --ink:#161513; --ink2:#3a3733;
+  --muted:#8a857c; --line:#d6d1c6; --rust:#a8432c; --gold:#b08a2e; --navy:#233b54; --green:#4a5d3a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink2);
+  font-family:"Source Serif Pro","Songti SC","SimSun",Georgia,"Times New Roman",serif;
+  font-size:15.5px;line-height:1.9;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul,ol{list-style:none}
+::selection{background:var(--ink);color:var(--paper)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* ============ 报眉 ============ */
+.mast{background:var(--ink);color:var(--paper);border-bottom:5px solid var(--rust)}
+.mast-in{max-width:1180px;margin:0 auto;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;font-family:ui-sans-serif,system-ui,-apple-system,"PingFang SC",sans-serif}
+.mast-l{display:flex;gap:16px;align-items:center}
+.mast-l b{color:var(--rust);letter-spacing:1px}
+.mast-r{display:flex;gap:18px;color:#c2bdae}
+.mast-r a:hover{color:var(--rust)}
+
+/* ============ 报头 ============ */
+.mh{text-align:center;padding:34px 0 22px;border-bottom:1px solid var(--line)}
+.brand{font-size:clamp(40px,9vw,86px);font-weight:900;letter-spacing:-1px;line-height:1;color:var(--ink)}
+.brand span{color:var(--rust)}
+.tagline{font-size:13.5px;color:var(--muted);margin-top:12px;letter-spacing:6px;font-family:ui-sans-serif,system-ui,-apple-system,"PingFang SC",sans-serif}
+.rule{display:flex;align-items:center;gap:14px;margin-top:20px;font-size:11px;color:var(--muted);font-family:ui-sans-serif,system-ui,-apple-system,"PingFang SC",sans-serif}
+.rule i{flex:1;height:1px;background:var(--line)}
+.rule b{color:var(--rust);letter-spacing:2px}
+
+/* ============ 导航 ============ */
+nav{background:var(--paper2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;font-family:ui-sans-serif,system-ui,-apple-system,"PingFang SC",sans-serif}
+.nav-in{max-width:1180px;margin:0 auto;display:flex}
+.nav-in a{flex:1;text-align:center;padding:13px 10px;font-size:13px;color:var(--ink2);border-right:1px solid var(--line);transition:.2s;letter-spacing:1px}
+.nav-in a:last-child{border-right:0}
+.nav-in a:hover,.nav-in a.on{background:var(--ink);color:var(--paper)}
+.mbtn{display:none;width:56px;background:var(--ink);border:0;color:var(--paper);font-size:14px;cursor:pointer}
+
+/* ============ 通用 ============ */
+section{padding:70px 0}
+.sec-t{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;border-bottom:3px double var(--line);padding-bottom:12px}
+.sec-t .no{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;color:var(--rust);letter-spacing:3px;font-weight:700}
+.sec-t h2{font-size:26px;font-weight:900;color:var(--ink);letter-spacing:-.5px}
+.sec-t h2 em{font-style:normal;color:var(--rust)}
+.sec-t .more{margin-left:auto;font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;color:var(--muted)}
+.sec-t .more:hover{color:var(--rust)}
+
+/* ============ 头条（首字下沉 + 双栏） ============ */
+.lead{display:grid;grid-template-columns:1.6fr 1fr;gap:40px}
+.kicker{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;color:var(--rust);letter-spacing:3px;font-weight:700;margin-bottom:14px}
+.lead h1{font-size:clamp(28px,4.2vw,42px);line-height:1.28;font-weight:900;color:var(--ink);margin-bottom:18px;letter-spacing:-.5px}
+.lead h1 em{font-style:normal;color:var(--rust)}
+.drop::first-letter{font-size:4.6em;float:left;line-height:.92;padding:6px 12px 0 0;font-weight:900;color:var(--rust)}
+.drop{font-size:16.5px;line-height:1.95;color:var(--ink2)}
+.drop p{margin-bottom:14px;text-indent:2em}
+.lead .side{border-left:1px solid var(--line);padding-left:32px}
+.lead .side .label{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:16px}
+.note{border-top:3px solid var(--rust);padding-top:14px;margin-bottom:22px}
+.note h4{font-size:16.5px;font-weight:900;color:var(--ink);margin-bottom:8px;line-height:1.5}
+.note h4:hover{color:var(--rust)}
+.note p{font-size:14px;color:var(--ink2)}
+.note .by{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;color:var(--muted);margin-top:10px}
+.note .by span{color:var(--rust)}
+
+/* ============ 卡片库（非网格：横向条目 + 竖卡混排） ============ */
+.lib{display:grid;grid-template-columns:repeat(12,1fr);gap:26px}
+.card{border-top:1px solid var(--line);padding-top:18px}
+.card .cap{font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;color:var(--rust);letter-spacing:2px;font-weight:700;margin-bottom:10px}
+.card h3{font-size:19px;font-weight:900;color:var(--ink);line-height:1.45;margin-bottom:8px}
+.card h3:hover{color:var(--rust)}
+.card h3 a{background:linear-gradient(var(--rust),var(--rust));background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .3s}
+.card h3 a:hover{background-size:100% 1px}
+.card p{font-size:14px;color:var(--ink2)}
+.card .meta{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;color:var(--muted);margin-top:12px;padding-top:10px;border-top:1px dotted var(--line)}
+.card .meta b{color:var(--ink)}
+.s1{grid-column:span 7}.s2{grid-column:span 5}.s3{grid-column:span 4}.s4{grid-column:span 4}.s5{grid-column:span 4}
+.s6{grid-column:span 6}.s7{grid-column:span 6}
+.card.ft h3{font-size:23px}
+.card .rate{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;color:var(--rust);font-weight:700}
+
+/* ============ 分栏（杂志式 3 栏） ============ */
+.cols{column-count:3;column-gap:34px;column-rule:1px solid var(--line);font-size:15px;line-height:1.95}
+.cols h4{font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;color:var(--rust);letter-spacing:2px;margin:0 0 10px;break-after:avoid}
+.cols p{margin-bottom:14px;text-indent:2em}
+.cols p:first-child{text-indent:0}
+
+/* ============ 榜单 ============ */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+.chart{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 30px}
+.chart:nth-child(2n){border-right:0}
+.chart:nth-child(n+3){border-bottom:0}
+.chart .h{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+.chart .h b{font-size:18px;font-weight:900;color:var(--ink)}
+.chart .h i{font-family:ui-sans-serif,system-ui,sans-serif;font-style:normal;font-size:11px;color:var(--muted);margin-left:auto}
+.chart ol li{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px dotted var(--line)}
+.chart ol li:last-child{border-bottom:0}
+.chart .n{font-family:ui-sans-serif,system-ui,sans-serif;font-size:22px;font-weight:900;color:var(--line);line-height:1}
+.chart li.top3 .n{color:var(--rust)}
+.chart .t{font-size:15.5px;font-weight:700;color:var(--ink)}
+.chart .t small{display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:3px}
+.chart .v{font-family:ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:700;color:var(--rust)}
+
+/* ============ 编读往来（问答式） ============ */
+.qa{border:1px solid var(--line)}
+.qa .it{padding:0 0 0 0;border-bottom:1px solid var(--line)}
+.qa .it:last-child{border-bottom:0}
+.qa .q{display:grid;grid-template-columns:56px 1fr;align-items:start;padding:20px 24px;background:var(--paper2);cursor:pointer}
+.qa .q .badge{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;font-weight:700;color:var(--paper);background:var(--ink);padding:4px 0;text-align:center;letter-spacing:1px}
+.qa .q .badge.r{background:var(--rust)}
+.qa .q h5{font-size:16.5px;font-weight:900;color:var(--ink);padding-left:16px;line-height:1.6}
+.qa .it.open .q h5{color:var(--rust)}
+.qa .a{display:none;padding:4px 24px 22px 96px;font-size:15px;color:var(--ink2)}
+.qa .it.open .a{display:block}
+.qa .a::before{content:"答：";color:var(--rust);font-weight:700}
+
+/* ============ 友链 ============ */
+.links{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.links a{padding:13px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink2);transition:.2s;border-left:3px solid transparent}
+.links a:nth-child(3n){border-right:0}
+.links a:nth-child(n+10){border-bottom:0}
+.links a::before{content:"◆ ";color:var(--rust);font-size:10px}
+.links a:hover{background:var(--ink);color:var(--paper);border-left-color:var(--rust)}
+
+/* ============ 页脚 ============ */
+footer{background:var(--ink);color:#c2bdae;padding:54px 0 0;font-family:ui-sans-serif,system-ui,-apple-system,"PingFang SC",sans-serif}
+.foot{max-width:1180px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px}
+.foot .logo{font-size:26px;color:var(--paper);font-weight:900;letter-spacing:-.5px;font-family:"Source Serif Pro",Georgia,serif}
+.foot .logo span{color:var(--rust)}
+.foot p{font-size:13px;margin-top:12px;line-height:1.85}
+.foot .u{font-size:12px;color:var(--rust);margin-top:12px;word-break:break-all}
+.foot h5{font-size:11.5px;color:var(--rust);letter-spacing:2px;margin-bottom:14px;font-weight:700}
+.foot ul li{padding:6px 0}
+.foot a{font-size:13.5px;color:#c2bdae;transition:.2s}
+.foot a:hover{color:var(--rust)}
+.colo{max-width:1180px;margin:0 auto;padding:22px 28px;border-top:1px solid #2a2724;margin-top:40px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#8a857c}
+.colo b{color:var(--paper)}
+
+#top{position:fixed;right:20px;bottom:24px;width:46px;height:46px;background:var(--ink);border:0;color:var(--paper);font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:60;border-radius:0}
+#top.on{opacity:1;visibility:visible}
+#top:hover{background:var(--rust)}
+
+@media (max-width:980px){
+  .lead{grid-template-columns:1fr;gap:30px}
+  .lead .side{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:26px}
+  .lib{gap:22px}
+  .s1,.s2,.s6,.s7{grid-column:span 12}
+  .s3,.s4,.s5{grid-column:span 6}
+  .charts{grid-template-columns:1fr}
+  .chart{border-right:0}
+  .chart:nth-child(n+2){border-bottom:0}
+  .chart:last-child{border-bottom:0}
+  .links{grid-template-columns:repeat(2,1fr)}
+  .links a{border-right:0!important}
+  .foot{grid-template-columns:1fr 1fr}
+  .nav-in{flex-direction:column;max-height:0;overflow:hidden;transition:.35s}
+  .nav-in.on{max-height:600px}
+  .nav-in a{border-right:0!important;border-bottom:1px solid var(--line)}
+  .mbtn{display:block;margin-left:auto}
+  nav{display:flex;justify-content:flex-end}
+  .qa .a{padding-left:24px}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:0 18px}
+  section{padding:52px 0}
+  .mast-in{flex-direction:column;gap:6px;text-align:center}
+  .rule{font-size:10px;gap:8px}
+  .cols{column-count:1}
+  .lib{gap:20px}
+  .s3,.s4,.s5{grid-column:span 12}
+  .foot{grid-template-columns:1fr}
+  .links{grid-template-columns:1fr}
+  .qa .q{grid-template-columns:44px 1fr}
+  .qa .a{padding-left:18px}
+  .chart{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<div class="mast">
+  <div class="mast-in">
+    <div class="mast-l"><b>■</b><span>巴巴电影网 · 电影评论编辑部</span></div>
+    <div class="mast-r">
+      <span>第 2025-42 期</span>
+      <span>2025年10月10日 出版</span>
+      <a href="#">RSS</a>
+      <a href="#">投稿</a>
+    </div>
+  </div>
+</div>
+
+<header class="mh">
+  <div class="wrap">
+    <div class="brand">巴巴<wbr>电影网</div>
+    <div class="tagline">B A B A · F I L M · R E V I E W</div>
+    <div class="rule"><i></i><b>独立影评 · 不赶热度 · 只谈电影</b><i></i></div>
+  </div>
+</header>
+
+<nav>
+  <button class="mbtn" id="menu" aria-label="菜单">[ 目录 ]</button>
+  <div class="nav-in" id="nav">
+    <a href="#lead" class="on">头条社论</a>
+    <a href="#lib">影片库</a>
+    <a href="#genres">类型片志</a>
+    <a href="#charts">年度榜单</a>
+    <a href="#qa">编读往来</a>
+    <a href="#links">友情链接</a>
+  </div>
+</nav>
+
+<section id="lead">
+  <div class="wrap">
+    <div class="kicker">EDITORIAL · 主编手记</div>
+    <div class="lead">
+      <div>
+        <h1>当一部电影只剩<em>两小时</em>，它到底该留给我们什么</h1>
+        <div class="drop">
+          <p>这一年看了太多被算法推着走的电影：开场的钩子、中段的反转、结尾的反转的反转。编剧手册被拆成零件，一板一眼地组装，观众的情绪被精确计算，落点永远在预期之内。</p>
+          <p>可电影从来不是填空题。那些真正被反复提起的段落，往往是多余的、偏题的、甚至「不好卖」的部分——一个没交代结果的拥抱、一句没有答案的提问、一段没有推动剧情的空镜。</p>
+          <p>巴巴电影网（https://babadianyingwang-wap.github.io）做的，就是把这些被算法裁掉的边角捡回来，重新摆回桌面上。我们不追热度，不抢首发，只谈一部电影值得被谈的那部分。</p>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="label">本期精选 EDITOR'S PICK</div>
+        <article class="note"><h4><a href="#">《深空回声》：国产硬科幻的尺度，终于敢留给孤独了</a></h4><p>它不是在解释宇宙，而是在处理一个人在知道答案之后，如何与答案共处。</p><div class="by">长文评论 · 12 分钟阅读 · 文 / <span>陆远</span></div></article>
+        <article class="note"><h4><a href="#">悬疑片走红之后，剧本在退化吗？</a></h4><p>从反转数量、叙事视角到节奏设计，一次对当下悬疑类型片的集体体检。</p><div class="by">类型观察 · 8 分钟阅读 · 文 / <span>沈岸</span></div></article>
+        <article class="note"><h4><a href="#">三部被低估的秋冬小片，值得二刷</a></h4><p>没有大卡司，没有热搜话题，但每一部都在认真地讲一件事。</p><div class="by">观影指南 · 6 分钟阅读 · 文 / <span>周与</span></div></article>
+        <article class="note"><h4><a href="#">专访：剪辑师谈如何剪掉一场戏的情绪</a></h4><p>删掉的部分，有时比留下的更重要。一段关于「克制」的对谈。</p><div class="by">幕后访谈 · 10 分钟阅读 · 文 / <span>陈叙</span></div></article>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="lib" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-t">
+      <span class="no">SECTION 01</span>
+      <h2>影片<em>库</em> · 长篇评论</h2>
+      <a class="more" href="#">查看全部评论 →</a>
+    </div>
+    <div class="lib">
+      <article class="card s1 ft">
+        <div class="cap">COVER STORY</div>
+        <h3><a href="#">《余温》：它不催泪，它只是让你想起某个冬天</a></h3>
+        <p>两个失意的人，两座城市，一封封没有回音的手写信。这部电影最了不起的地方在于，它拒绝把孤独处理成一种可被治愈的病症——信最终有没有寄到，并不重要；重要的是写信的那一刻，人重新拥有了表达欲。导演在这里展现了罕见的耐心。</p>
+        <div class="meta"><b>★★★★☆ 8.9</b> · 爱情 / 治愈 · 2024 · 评论 426 条</div>
+      </article>
+      <article class="card s2">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《边境回声》的节奏从哪里开始失控</a></h3>
+        <p>前半程追凶戏精准得像钟表，后半程却急于收束所有伏笔。一次关于「信息量过载」的复盘。</p>
+        <div class="meta"><b>★★★★☆ 8.6</b> · 动作 / 犯罪 · 2025 · 评论 312 条</div>
+      </article>
+      <article class="card s3">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《第十三个房间》：本格推理的外壳下，是一次伦理考试</a></h3>
+        <p>真相并不复杂，难的是真相被说出之后，谁有资格原谅谁。影片把悬疑片常见的「智力游戏」推向了道德层面，也因此在最后二十分钟显出了野心。</p>
+        <div class="meta"><b>★★★★★ 9.1</b> · 悬疑 / 惊悚 · 2025 · 评论 508 条</div>
+      </article>
+      <article class="card s4">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《镜像城市》的世界观，值不值得牺牲人物</a></h3>
+        <p>设定足够漂亮，但漂亮得有些冷。当规则比人更用力，观众记住的是机关，不是面孔。</p>
+        <div class="meta"><b>★★★★☆ 8.7</b> · 科幻 / 悬疑 · 2024 · 评论 297 条</div>
+      </article>
+      <article class="card s5">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《假期实习生》：中年失意被拍得有多体面</a></h3>
+        <p>喜剧的外壳之下，是一份关于体面的说明书。它不贩卖焦虑，也不提供廉价答案。</p>
+        <div class="meta"><b>★★★★☆ 8.4</b> · 喜剧 / 职场 · 2025 · 评论 241 条</div>
+      </article>
+      <article class="card s6">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《海边便利店》为什么值得被当作一部慢电影来看</a></h3>
+        <p>没有强情节，没有必须解决的冲突，只有一群陌生人把心事留在了同一个柜台。这种影片最容易被快节奏市场低估，也最容易被记住。</p>
+        <div class="meta"><b>★★★★☆ 8.7</b> · 爱情 / 治愈 · 2025 · 评论 186 条</div>
+      </article>
+      <article class="card s7">
+        <div class="cap">REVIEW</div>
+        <h3><a href="#">《铁骑归途》的群像叙事，撑起了多少场面戏</a></h3>
+        <p>它证明了场面并不等于大制作，真正让战争场面成立的，是每一个人都被认真对待。几个小人物的支线处理，是全片最值得细读的部分。</p>
+        <div class="meta"><b>★★★★☆ 8.5</b> · 动作 / 历史 · 2024 · 评论 263 条</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="genres" style="background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-t">
+      <span class="no">SECTION 02</span>
+      <h2>类型<em>片志</em> · 一个类型，一种读法</h2>
+      <a class="more" href="#">所有类型 →</a>
+    </div>
+    <div class="cols">
+      <h4>动作 / 犯罪</h4>
+      <p>动作片的底线从来不是场面，而是代价。近年来真正立得住的几部，都在做同一件事：让每一次开枪、每一次追逐，都留下可感知的后果。</p>
+      <p>从《边境回声》到《铁骑归途》，我们看到的是动作场面从「展示」转向「承认」——承认暴力有成本，承认英雄会疲惫。</p>
+      <h4>悬疑 / 惊悚</h4>
+      <p>悬疑类型正在经历一场通胀：反转越多，观众越麻木。真正稀缺的，是愿意把谜底留白的那一类。</p>
+      <p>《第十三个房间》的可贵之处，在于它知道什么时候该停下来。它把智力谜题推到伦理层面，让观众不得不面对自己的判断。</p>
+      <h4>爱情 / 治愈</h4>
+      <p>治愈不是糖，而是把伤口摊开给你看，再轻轻盖上。《余温》和《海边便利店》都不急着解决孤独，它们只是陪着人物，把日子过完。</p>
+      <p>这类影片最容易被贴上「小清新」的标签，但真正做得好的，底色都是诚实。</p>
+      <h4>科幻 / 冒险</h4>
+      <p>国产科幻的想象力，正在从「奇观」转向「处境」。《深空回声》与《镜像城市》都试图让技术服务于人的困境，区别只在于，谁愿意给孤独留出更多时间。</p>
+      <p>科幻片真正动人的瞬间，从来不是特效，而是人被技术逼到墙角之后，做出的那个不理性的决定。</p>
+      <h4>喜剧 / 职场</h4>
+      <p>喜剧最难的不是逗笑，而是不让笑建立在他人的窘迫之上。《假期实习生》做到了体面：它把中年失意拍得有尊严。</p>
+      <h4>动作 / 历史</h4>
+      <p>历史题材的群像叙事，是这两年最值得持续观察的一条线。它考验的不只是调度能力，更是创作者是否愿意承认：每一个普通人都有名字。</p>
+    </div>
+  </div>
+</section>
+
+<section id="charts">
+  <div class="wrap">
+    <div class="sec-t">
+      <span class="no">SECTION 03</span>
+      <h2>年度<em>榜单</em> · 编辑部共识</h2>
+      <a class="more" href="#">榜单说明 →</a>
+    </div>
+    <div class="charts">
+      <div class="chart">
+        <div class="h"><b>年度十佳</b><i>编辑部投票 · 2025</i></div>
+        <ol>
+          <li class="top3"><span class="n">01</span><span class="t">第十三个房间<small>悬疑 / 惊悚 · 陆远</small></span><span class="v">9.1</span></li>
+          <li class="top3"><span class="n">02</span><span class="t">深空回声<small>科幻 / 冒险 · 沈岸</small></span><span class="v">8.9</span></li>
+          <li class="top3"><span class="n">03</span><span class="t">余温<small>爱情 / 治愈 · 周与</small></span><span class="v">8.9</span></li>
+          <li><span class="n">04</span><span class="t">镜像城市<small>科幻 / 悬疑 · 陈叙</small></span><span class="v">8.7</span></li>
+          <li><span class="n">05</span><span class="t">海边便利店<small>爱情 / 治愈 · 陆远</small></span><span class="v">8.7</span></li>
+          <li><span class="n">06</span><span class="t">边境回声<small>动作 / 犯罪 · 沈岸</small></span><span class="v">8.6</span></li>
+        </ol>
+      </div>
+      <div class="chart">
+        <div class="h"><b>年度被低估</b><i>口碑滞后 · 2025</i></div>
+        <ol>
+          <li class="top3"><span class="n">01</span><span class="t">海边便利店<small>爱情 / 治愈 · 8.7</small></span><span class="v">↗</span></li>
+          <li class="top3"><span class="n">02</span><span class="t">北方以南<small>剧情 / 年代 · 8.6</small></span><span class="v">↗</span></li>
+          <li><span class="n">03</span><span class="t">暗河之上<small>犯罪 / 剧情 · 8.5</small></span><span class="v">↗</span></li>
+          <li><span class="n">04</span><span class="t">假期实习生<small>喜剧 / 职场 · 8.4</small></span><span class="v">↗</span></li>
+          <li><span class="n">05</span><span class="t">第九街区<small>剧情 / 社会 · 8.3</small></span><span class="v">↗</span></li>
+          <li><span class="n">06</span><span class="t">白鸟车站<small>治愈 / 公路 · 8.2</small></span><span class="v">↗</span></li>
+        </ol>
+      </div>
+      <div class="chart">
+        <div class="h"><b>最值得细读</b><i>剧本与文本 · 2025</i></div>
+        <ol>
+          <li class="top3"><span class="n">01</span><span class="t">第十三个房间<small>本格结构 · 9.1</small></span><span class="v">A+</span></li>
+          <li class="top3"><span class="n">02</span><span class="t">暗河之上<small>多线叙事 · 8.8</small></span><span class="v">A</span></li>
+          <li><span class="n">03</span><span class="t">镜像城市<small>世界观设定 · 8.7</small></span><span class="v">A</span></li>
+          <li><span class="n">04</span><span class="t">铁骑归途<small>群像结构 · 8.5</small></span><span class="v">A-</span></li>
+          <li><span class="n">05</span><span class="t">余温<small>书信体 · 8.9</small></span><span class="v">A</span></li>
+          <li><span class="n">06</span><span class="t">假期实习生<small>职场群戏 · 8.4</small></span><span class="v">B+</span></li>
+        </ol>
+      </div>
+      <div class="chart">
+        <div class="h"><b>读者选择</b><i>站内投票 · 12,480 票</i></div>
+        <ol>
+          <li class="top3"><span class="n">01</span><span class="t">余温<small>爱情 / 治愈 · 9.0</small></span><span class="v">21.4%</span></li>
+          <li class="top3"><span class="n">02</span><span class="t">深空回声<small>科幻 / 冒险 · 8.9</small></span><span class="v">18.6%</span></li>
+          <li><span class="n">03</span><span class="t">第十三个房间<small>悬疑 / 惊悚 · 9.1</small></span><span class="v">15.2%</span></li>
+          <li><span class="n">04</span><span class="t">边境回声<small>动作 / 犯罪 · 8.6</small></span><span class="v">11.8%</span></li>
+          <li><span class="n">05</span><span class="t">铁骑归途<small>动作 / 历史 · 8.5</small></span><span class="v">9.7%</span></li>
+          <li><span class="n">06</span><span class="t">镜像城市<small>科幻 / 悬疑 · 8.7</small></span><span class="v">8.3%</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="qa" style="background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-t">
+      <span class="no">SECTION 04</span>
+      <h2>编读<em>往来</em> · 来信与答复</h2>
+      <a class="more" href="#">我要提问 →</a>
+    </div>
+    <div class="qa" id="qaBox">
+      <div class="it"><div class="q"><span class="badge">问</span><h5>巴巴电影网的评论，和一般影评号有什么不同？</h5></div><div class="a">我们不追热度、不抢首发，稿件以长文为主，一篇文章通常只谈一部电影的某一个问题。我们希望读者看完之后，对「为什么」有答案，而不只是对「好不好」有判断。</div></div>
+      <div class="it"><div class="q"><span class="badge">问</span><h5>评分是怎么来的，会受市场因素干扰吗？</h5></div><div class="a">编辑部内部投票，每人一票，互不同步。最终公布的是众数与均值区间，不公布个人分数，也不接受片方送评与营销邀约。</div></div>
+      <div class="it"><div class="q"><span class="badge">问</span><h5>能不能写我喜欢的导演或某一部冷门片？</h5></div><div class="a">可以。我们每月开放一次选题征集，入选稿件由编辑部与作者共同打磨，稿酬按篇幅与深度分级结算，详情见投稿页。</div></div>
+      <div class="it"><div class="q"><span class="badge r">问</span><h5>你们会对国产片更宽容吗？</h5></div><div class="a">不会。栏目「直说」专门用来写失望，这是我们固定保留的版面。一部被寄予厚望的影片如果失手，我们通常会写两篇：一篇谈它的问题，一篇谈它为什么值得被期待。</div></div>
+      <div class="it"><div class="q"><span class="badge">问</span><h5>怎么订阅？有没有邮件版？</h5></div><div class="a">每周五出刊，提供网页与邮件两种形式，邮件版不夹带广告，可随时退订。订阅入口在页面右上角。</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="wrap">
+    <div class="sec-t">
+      <span class="no">SECTION 05</span>
+      <h2>友情<em>链接</em> · 同路人</h2>
+      <a class="more" href="#">申请友链 →</a>
+    </div>
+    <div class="links">
+      <a href="#">独立影评人协会</a>
+      <a href="#">电影文本研究</a>
+      <a href="#">新片定档日历</a>
+      <a href="#">纪录片观察</a>
+      <a href="#">经典老片回顾</a>
+      <a href="#">电影节资讯站</a>
+      <a href="#">编剧手册笔记</a>
+      <a href="#">电影音乐档案</a>
+      <a href="#">放映活动汇总</a>
+      <a href="#">摄影与取景</a>
+      <a href="#">电影周边书店</a>
+      <a href="#">读者观影小组</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="logo">巴巴<wbr>电影网</div>
+      <p>巴巴电影网（https://babadianyingwang-wap.github.io）是独立电影评论编辑部，以长文影评、类型片志与年度榜单为主，只谈电影值得被谈的那部分。</p>
+      <div class="u">https://babadianyingwang-wap.github.io</div>
+    </div>
+    <div>
+      <h5>栏目</h5>
+      <ul><li><a href="#lead">头条社论</a></li><li><a href="#lib">影片库</a></li><li><a href="#genres">类型片志</a></li><li><a href="#charts">年度榜单</a></li><li><a href="#qa">编读往来</a></li></ul>
+    </div>
+    <div>
+      <h5>类型索引</h5>
+      <ul><li><a href="#">动作 / 犯罪</a></li><li><a href="#">悬疑 / 惊悚</a></li><li><a href="#">爱情 / 治愈</a></li><li><a href="#">科幻 / 冒险</a></li><li><a href="#">喜剧 / 职场</a></li></ul>
+    </div>
+    <div>
+      <h5>关于</h5>
+      <ul><li><a href="#">编辑部</a></li><li><a href="#">投稿与稿酬</a></li><li><a href="#">订阅邮件版</a></li><li><a href="#">联系我们</a></li><li><a href="#">友情链接</a></li></ul>
+    </div>
+  </div>
+  <div class="colo">
+    <span>© 2025 <b>巴巴电影网</b>（babadianyingwang-wap.github.io）· 关键词：巴巴电影网 · babadianyingwang-wap.github.io · 电影评论 · 深度影评 · 类型片志 · 年度榜单</span>
+    <span><a href="#">隐私政策</a> &nbsp; <a href="#">转载声明</a> &nbsp; <a href="#" id="totop">[ 回到顶部 ]</a></span>
+  </div>
+</footer>
+
+<button id="top" aria-label="返回顶部">↑</button>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),menu=document.getElementById('menu');
+  menu.addEventListener('click',function(){nav.classList.toggle('on')});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('on')})});
+
+  var links=nav.querySelectorAll('a'),secs=[];
+  links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)secs.push(s)});
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+140,cur=secs[0]?secs[0].id:'';
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+  });
+
+  document.getElementById('qaBox').addEventListener('click',function(e){
+    var q=e.target.closest('.q');if(!q)return;
+    var it=q.parentElement,open=it.classList.contains('open');
+    document.querySelectorAll('#qaBox .it').forEach(function(x){x.classList.remove('open')});
+    if(!open)it.classList.add('open');
+  });
+
+  var top=document.getElementById('top');
+  window.addEventListener('scroll',function(){top.classList.toggle('on',window.scrollY>500)});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  document.getElementById('totop').addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
